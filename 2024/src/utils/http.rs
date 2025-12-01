@@ -1,11 +1,11 @@
 // TODO: Replace the Curl subprocess with a basic HTTP/2 request using std::io::net
 // TODO: Prevent early fetching
-// TODO: Cache the response and use the instead cache if it is available
+// TODO: Cache the response and use that instead of re-requesting it
 
 use std::{env, process::Command};
 
 pub fn request(day: u8) -> Result<String, ()> {
-    println!("Requesting the input of day {}...", &day);
+    println!("Requesting the input of day {}...", day);
 
     let p_request = Command::new("/usr/bin/curl")
         .arg("-H")
@@ -13,7 +13,7 @@ pub fn request(day: u8) -> Result<String, ()> {
             "Cookie: session={}",
             env::var("SESSION").unwrap_or_else(|_| "".to_string())
         ))
-        .arg(format!("https://adventofcode.com/2024/day/{}/input", &day))
+        .arg(format!("https://adventofcode.com/2025/day/{}/input", day))
         .output();
 
     match p_request {

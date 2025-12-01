@@ -1,4 +1,5 @@
-/target
-/input_examples/**
-notes.md
+**/target
+
+**/inputs
+**/example-inputs
 .env
