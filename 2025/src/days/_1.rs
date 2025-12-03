@@ -2,7 +2,7 @@ pub fn part1(input: String) -> String {
     let mut value = 50;
     let mut match_count = 0;
 
-    for input_line in input.split("\n") {
+    for input_line in input.split('\n') {
         if input_line.is_empty() {
             continue;
         }
@@ -31,7 +31,7 @@ pub fn part2(input: String) -> String {
     let mut value = 50;
     let mut match_count = 0;
 
-    for input_line in input.split("\n") {
+    for input_line in input.split('\n') {
         if input_line.is_empty() {
             continue;
         }

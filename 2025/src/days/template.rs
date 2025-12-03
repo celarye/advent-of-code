@@ -1,9 +1,9 @@
 pub fn part1(_input: String) -> String {
-    "Not Implemented".to_string()
+    String::from("Not Implemented")
 }
 
 pub fn part2(_input: String) -> String {
-    "Not Implemented".to_string()
+    String::from("Not Implemented")
 }
 
 #[cfg(test)]

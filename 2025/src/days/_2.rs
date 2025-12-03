@@ -1,0 +1,115 @@
+pub fn part1(input: String) -> String {
+    let mut sum = 0;
+
+    for input_line in input.split(',') {
+        let (number_one_str, number_two_str) = input_line
+            .split_once('-')
+            .expect("the input need to exist out of - seperated numbers");
+
+        let number_one = number_one_str
+            .parse::<u64>()
+            .expect("the number one str should parse into valid u64");
+
+        let number_two = number_two_str
+            .trim_end_matches('\n')
+            .parse::<u64>()
+            .expect("the number two str should parse into valid u64");
+
+        for number in number_one..=number_two {
+            let number_string = number.to_string();
+
+            if number_string.len() % 2 != 0 {
+                continue;
+            }
+
+            let (number_section_one_string, number_section_two_string) =
+                number_string.split_at(number_string.len() / 2);
+
+            if number_section_one_string == number_section_two_string {
+                sum += number;
+            }
+        }
+    }
+
+    sum.to_string()
+}
+
+pub fn part2(input: String) -> String {
+    let mut sum = 0;
+
+    for input_line in input.split(',') {
+        let (number_one_str, number_two_str) = input_line
+            .split_once('-')
+            .expect("the input need to exist out of - seperated numbers");
+
+        let number_one = number_one_str
+            .parse::<u64>()
+            .expect("the number one str should parse into valid u64");
+
+        let number_two = number_two_str
+            .trim_end_matches('\n')
+            .parse::<u64>()
+            .expect("the number two str should parse into valid u64");
+
+        for number in number_one..=number_two {
+            let number_string = number.to_string();
+
+            for split in 2..=number_string.len() {
+                if number_string.len() % split != 0 {
+                    continue;
+                }
+
+                let mut is_match = true;
+
+                let number_string = number_string.clone();
+
+                let mut number_str_segments = vec![];
+
+                for split_part in 0..split {
+                    number_str_segments.push(
+                        &number_string[(split_part * (number_string.len() / split))
+                            ..(split_part * (number_string.len() / split)
+                                + (number_string.len() / split))],
+                    );
+                }
+
+                let check_segment_str = *number_str_segments
+                    .first()
+                    .expect("there should exist mutliple number segments");
+
+                for number_segment_str in number_str_segments {
+                    if check_segment_str != number_segment_str {
+                        is_match = false;
+                        break;
+                    }
+                }
+
+                if is_match {
+                    sum += number;
+                    break;
+                }
+            }
+        }
+    }
+
+    sum.to_string()
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::{days::_2, utils::fs};
+
+    #[test]
+    fn part1_test() {
+        let input = fs::get_input(2, true).expect("there needs to be an example input file");
+
+        assert_eq!("1227775554", &_2::part1(input))
+    }
+
+    #[test]
+    fn part2_test() {
+        let input = fs::get_input(2, true).expect("there needs to be an example input file");
+
+        assert_eq!("4174379265", &_2::part2(input))
+    }
+}

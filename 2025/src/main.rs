@@ -1,3 +1,7 @@
+// TODO:
+// - Cli parameters: Day range, cache
+// - Benchmark support
+
 use std::{
     fs,
     path::{Path, PathBuf},
@@ -20,9 +24,7 @@ fn main() -> ExitCode {
 }
 
 fn run() -> Result<(), ()> {
-    // TODO: Cli parameters: Day range, cache
-
-    let days = vec![1];
+    let days = vec![1, 2];
 
     #[cfg(feature = "env_file")]
     {
