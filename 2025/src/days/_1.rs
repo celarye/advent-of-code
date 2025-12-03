@@ -1,4 +1,6 @@
-pub fn part1(input: String) -> String {
+use crate::days::_1;
+
+fn part1(input: &str) -> String {
     let mut value = 50;
     let mut match_count = 0;
 
@@ -27,7 +29,7 @@ pub fn part1(input: String) -> String {
     match_count.to_string()
 }
 
-pub fn part2(input: String) -> String {
+fn part2(input: &str) -> String {
     let mut value = 50;
     let mut match_count = 0;
 
@@ -62,6 +64,14 @@ pub fn part2(input: String) -> String {
     match_count.to_string()
 }
 
+pub fn result(part: u8, input: &str) -> String {
+    match part {
+        1 => _1::part1(input),
+        2 => _1::part2(input),
+        _ => unimplemented!("this day only has two parts"),
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use crate::{days::_1, utils::fs};
@@ -70,13 +80,13 @@ mod tests {
     fn part1_test() {
         let input = fs::get_input(1, true).expect("there needs to be an example input file");
 
-        assert_eq!("3", &_1::part1(input));
+        assert_eq!("3", &_1::part1(&input));
     }
 
     #[test]
     fn part2_test() {
         let input = fs::get_input(1, true).expect("there needs to be an example input file");
 
-        assert_eq!("6", &_1::part2(input));
+        assert_eq!("6", &_1::part2(&input));
     }
 }

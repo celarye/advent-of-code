@@ -15,7 +15,7 @@ use utils::{env, http};
 
 fn main() -> ExitCode {
     if let Ok(()) = run() {
-        println!("Exiting the program");
+        println!("\nExiting the program");
         ExitCode::from(0)
     } else {
         eprintln!("Exiting the program");
@@ -38,16 +38,8 @@ fn run() -> Result<(), ()> {
     println!("Getting all required inputs...");
     get_inputs(&days, true)?;
 
-    println!("\nResults:\n");
-    for (day_count, day_result) in days::results(&days)?.iter().enumerate() {
-        println!("\nDay {}:\n", &day_count + 1);
-
-        for (part_count, part_result) in day_result.iter().enumerate() {
-            print!("  Part {}: ", &part_count + 1);
-            println!("{}\n", &part_result);
-        }
-    }
-
+    println!("Getting all results...");
+    days::results(&days)?;
     Ok(())
 }
 

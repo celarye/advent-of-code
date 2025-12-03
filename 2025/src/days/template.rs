@@ -1,9 +1,17 @@
-pub fn part1(_input: String) -> String {
+fn part1(_input: &sttr) -> String {
     String::from("Not Implemented")
 }
 
-pub fn part2(_input: String) -> String {
+fn part2(_input: &str) -> String {
     String::from("Not Implemented")
+}
+
+pub fn result(part: u8, input: &str) -> String {
+    match part {
+        1 => _1::part1(input),
+        2 => _1::part2(input),
+        _ => unimplemented!("this day only has two parts"),
+    }
 }
 
 #[cfg(test)]
