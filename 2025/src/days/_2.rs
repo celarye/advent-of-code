@@ -56,20 +56,18 @@ fn part2(input: &str) -> String {
         for number in number_one..=number_two {
             let number_string = number.to_string();
 
-            for split in 2..=number_string.len() {
+            for split in 1..=(number_string.len() / 2) {
                 if number_string.len() % split != 0 {
                     continue;
                 }
 
                 let mut is_match = true;
 
-                let check_segment_str = &number_string[0..(number_string.len() / split)];
+                let check_segment_str = &number_string[0..split];
 
-                for split_part in 1..split {
+                for segment in 1..(number_string.len() / split) {
                     if check_segment_str
-                        != &number_string[(split_part * (number_string.len() / split))
-                            ..(split_part * (number_string.len() / split)
-                                + (number_string.len() / split))]
+                        != &number_string[(segment * split)..(segment * split + split)]
                     {
                         is_match = false;
                         break;
