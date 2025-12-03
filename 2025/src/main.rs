@@ -24,7 +24,7 @@ fn main() -> ExitCode {
 }
 
 fn run() -> Result<(), ()> {
-    let days = vec![1, 2];
+    let days = vec![1, 2, 3];
 
     #[cfg(feature = "env_file")]
     {
