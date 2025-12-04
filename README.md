@@ -9,4 +9,4 @@ Progress: 12/50
 
 ## 2025
 
-Progress: 2/2
+Progress: 8/8
