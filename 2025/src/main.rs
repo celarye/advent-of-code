@@ -39,8 +39,7 @@ fn run() -> Result<(), ()> {
     get_inputs(&days, true)?;
 
     println!("Getting all results...");
-    days::results(&days)?;
-    Ok(())
+    days::results(&days)
 }
 
 fn get_inputs(days: &[u8], cache: bool) -> Result<(), ()> {

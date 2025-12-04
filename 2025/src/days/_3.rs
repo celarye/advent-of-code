@@ -8,10 +8,11 @@ fn part1(input: &str) -> String {
             continue;
         }
 
-        let mut largest_numbers = vec![0; 2];
+        let mut largest_number_one = 0u8;
+        let mut largest_number_two = 0u8;
 
-        for (il_index, char) in input_line.chars().enumerate() {
-            if largest_numbers[1] == 9 {
+        for (index, char) in input_line.chars().enumerate() {
+            if largest_number_two == 9 {
                 break;
             }
 
@@ -19,29 +20,17 @@ fn part1(input: &str) -> String {
                 .to_digit(10)
                 .expect("the char should parse into valid u8") as u8;
 
-            let mut is_match = false;
-
-            for (ln_index, largest_number) in largest_numbers.iter_mut().enumerate() {
-                if is_match {
-                    *largest_number = 0;
-                    continue;
-                }
-
-                if char_number > *largest_number
-                    && (2 - ln_index + 1) <= (input_line.len() - il_index + 1)
-                {
-                    *largest_number = char_number;
-                    is_match = true;
-                }
+            if char_number > largest_number_one && index + 1 != input_line.len() {
+                largest_number_one = char_number;
+                largest_number_two = 0;
+            } else if char_number > largest_number_two {
+                largest_number_two = char_number;
             }
         }
 
-        sum += largest_numbers
-            .into_iter()
-            .map(|c| c.to_string())
-            .collect::<String>()
+        sum += (largest_number_one.to_string() + &largest_number_two.to_string())
             .parse::<u16>()
-            .expect("the combined numbers should parse into valid u64");
+            .expect("the combined numbers should parse into valid u8");
     }
 
     sum.to_string()
