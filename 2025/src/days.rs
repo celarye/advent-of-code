@@ -3,6 +3,7 @@ mod _2;
 mod _3;
 mod _4;
 mod _5;
+mod _6;
 
 use std::time::Instant;
 
@@ -26,6 +27,7 @@ pub fn results(days: &[u8]) -> Result<(), ()> {
                 3 => print!("{}", _3::result(part, &input)),
                 4 => print!("{}", _4::result(part, &input)),
                 5 => print!("{}", _5::result(part, &input)),
+                6 => print!("{}", _6::result(part, &input)),
                 _ => unimplemented!("this day is not yet available"),
             }
 
