@@ -16,6 +16,10 @@ clippy_fix:
 	@echo "Running Clippy fixes..."
 	@cargo clippy --fix -- -W clippy::pedantic
 
+test:
+	@echo "Running tests..."
+	@cargo test
+
 build_dev:
 	@echo "Building debug..."
 	@cargo build --features env_file
