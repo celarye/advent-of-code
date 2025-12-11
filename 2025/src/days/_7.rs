@@ -2,7 +2,7 @@ use crate::days::_7;
 
 fn part1(input: &str) -> String {
     let mut sum = 0;
-    let mut input_lines = input.split('\n');
+    let mut input_lines = input.lines();
 
     let first_input_line = input_lines.next().expect("the input should have lines");
 
@@ -19,10 +19,6 @@ fn part1(input: &str) -> String {
 
     let mut skip = true;
     for input_line in input_lines {
-        if input_line.is_empty() {
-            continue;
-        }
-
         if skip {
             skip = false;
             continue;
@@ -57,7 +53,7 @@ fn part1(input: &str) -> String {
 fn part2(input: &str) -> String {
     let mut sum = 1;
 
-    let mut input_lines = input.split('\n');
+    let mut input_lines = input.lines();
 
     let first_input_line = input_lines.next().expect("the input should have lines");
 
@@ -75,10 +71,6 @@ fn part2(input: &str) -> String {
 
     let mut skip = true;
     for input_line in input_lines {
-        if input_line.is_empty() {
-            continue;
-        }
-
         if skip {
             skip = false;
             continue;
